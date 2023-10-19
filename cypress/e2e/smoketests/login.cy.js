@@ -1,18 +1,7 @@
 describe('Verify Login functionality', () => {
 
   it('Verify Login with Valid username and Valid Password ', () => {
-    cy.visit('/web/index.php/auth/login')
-
-    cy.get('input[placeholder="Username"]').type(Cypress.env("username"))
-
-    cy.get('input[name="password"]').type(Cypress.env("password"))
-
-    cy.get('button[type="submit"]').click()
-
-    //Asertions 
-    cy.url().should("eq", "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index")
-
-    cy.contains('Dashboard').should("be.visible")
+      cy.login("Admin", "admin123")
   })
 
   it('Verify Login with invalid username and Valid Password', () => {

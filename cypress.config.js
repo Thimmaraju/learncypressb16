@@ -16,7 +16,7 @@ module.exports = defineConfig({
         "password": "admin123",
         "loginurl":"/web/index.php/auth/login"
     },
-    "video":false,
+    //"video":false,
   
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on);
