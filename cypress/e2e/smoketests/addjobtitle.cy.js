@@ -13,7 +13,8 @@ describe('Verify Add job title functionality', () => {
 
     cy.get('button[class="oxd-button oxd-button--medium oxd-button--secondary"]').click()
 
-    cy.get('#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > form > div:nth-child(1) > div > div:nth-child(2) > input').type(data.jobtile)
+    let RandomText = (Math.random() + 1).toString(36).substring(7);
+    cy.get('#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > form > div:nth-child(1) > div > div:nth-child(2) > input').type(data.jobtile+RandomText)
 
     cy.get('textarea[placeholder="Type description here"]').type(data.jobdescription)
 
