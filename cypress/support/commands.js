@@ -24,19 +24,34 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('login', (username, password ) => { 
+Cypress.Commands.add('login', (value1, value2 ) => { 
+    const menuitems = {
+
+        value1 : "Admin",
+        value2 : "PIM",
+        value3 : "Leave",
+        value4 : "Time",
+        value5 : "Recruitment",
+        value6 : "My Info",
+    
+    }
+    
     
     cy.visit(Cypress.env("loginurl"))
 
-    cy.get('input[placeholder="Username"]').type(username)
+    cy.get('input[placeholder="Username"]').type(value1)
 
-    cy.get('input[name="password"]').type(password)
+    cy.get('input[name="password"]').type(value2)
 
     cy.get('button[type="submit"]').click()
 
     //Asertions 
     cy.url().should("eq", "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index")
 
-    cy.contains('Dashboard').should("be.visible")
+     for (let i in menuitems){
+
+        cy.contains(menuitems[i]).should("be.visible")
+     }
+    
 
 })

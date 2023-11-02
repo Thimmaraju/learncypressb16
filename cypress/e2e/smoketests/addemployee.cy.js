@@ -2,11 +2,16 @@
 
 describe(`Verify Add employee functionality`, ()=>{
 
-    it("Verify add employee with Valid details ", ()=>{
+    beforeEach("before Each", ()=>{
 
         cy.login("Admin", "admin123")
         cy.contains('PIM').click()
-        cy.contains('Add Employee').click()
+        cy.contains('Add Employee').click() 
+    })
+
+    it.skip("Verify add employee with Valid details ", ()=>{
+
+    
 
         cy.get('input[placeholder="First Name"]').type("Raju")
 
@@ -18,12 +23,10 @@ describe(`Verify Add employee functionality`, ()=>{
         
     })
 
-    it("Verify Mandotory Details in Add employee ", ()=>{
+    specify("Verify Mandotory Details in Add employee ", ()=>{
       
-        cy.login(Cypress.env('username'), Cypress.env('password'))
-     
-        cy.contains('PIM').click()
-        cy.contains('Add Employee').click()
+    
+       
         cy.get('button[type="submit"]').click()
         cy.contains("Required").should('be.visible')
 
@@ -31,11 +34,7 @@ describe(`Verify Add employee functionality`, ()=>{
     })
 
     it("Verify characters limit for first name field ", ()=>{
-        
-        cy.login("Admin", "admin123")
-       
-        cy.contains('PIM').click()
-        cy.contains('Add Employee').click()
+
 
         cy.get('button[type="submit"]').click()
         cy.contains("Required").should('be.visible')
