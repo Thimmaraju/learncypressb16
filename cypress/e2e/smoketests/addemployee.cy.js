@@ -1,24 +1,27 @@
 
+import addemployee from "../../Pages/addemployee.po"
+import dashboard from "../../Pages/dashboardpage.po"
+import logindata from '../../fixtures/logindata.json'
 
 describe(`Verify Add employee functionality`, ()=>{
 
     beforeEach("before Each", ()=>{
 
-        cy.login("Admin", "admin123")
-        cy.contains('PIM').click()
-        cy.contains('Add Employee').click() 
+        cy.login(logindata.username, logindata.password)
+        cy.contains(dashboard.pimmenu()).click()
+        cy.contains(addemployee.addEmployeeSubmenu()).click() 
     })
 
     it.skip("Verify add employee with Valid details ", ()=>{
 
     
 
-        cy.get('input[placeholder="First Name"]').type("Raju")
+        cy.get(addemployee.firstnameInput()).type("Raju")
 
-        cy.get('input[name="lastName"]').type("G")
+        cy.get(addemployee.lastnameInput()).type("G")
 
-        cy.get('button[type="submit"]').click()
-        cy.contains("Successfully Saved").should('be.visible')
+        cy.get(addemployee.saveButton()).click()
+        cy.contains(addemployee.successmessage()).should('be.visible')
 
         
     })
@@ -27,8 +30,8 @@ describe(`Verify Add employee functionality`, ()=>{
       
     
        
-        cy.get('button[type="submit"]').click()
-        cy.contains("Required").should('be.visible')
+        cy.get(addemployee.saveButton()).click()
+        cy.contains(addemployee.firstnameErrorMessage()).should('be.visible')
 
         
     })
@@ -36,12 +39,12 @@ describe(`Verify Add employee functionality`, ()=>{
     it("Verify characters limit for first name field ", ()=>{
 
 
-        cy.get('button[type="submit"]').click()
-        cy.contains("Required").should('be.visible')
+        cy.get(addemployee.saveButton()).click()
+        cy.contains(addemployee.firstnameErrorMessage()).should('be.visible')
 
-        cy.get('input[placeholder="First Name"]').type("brelgfvklernjf kewbgifhwejuf kifheiu")
+        cy.get(addemployee.firstnameInput()).type("brelgfvklernjf kewbgifhwejuf kifheiu")
 
-        cy.contains('Should not exceed 30 characters').should('be.visible')
+        cy.contains(addemployee.exccesdlimiterrorMessage()).should('be.visible')
 
 
         

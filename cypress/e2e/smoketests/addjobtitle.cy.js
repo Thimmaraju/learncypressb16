@@ -1,25 +1,15 @@
+import dashboard from '../../Pages/dashboardpage.po'
+import jobtitle from '../../Pages/jobtitle.po'
 import data from '../../fixtures/addjobtitle.json'
 describe('Verify Add job title functionality', () => {
 
     it('Verify Add Job title with valid Input details', () => {
 
-
         cy.login("Admin", "admin123")
-       
-        cy.contains('Admin').click()
 
-    cy.contains('Job').click()
-    cy.contains("Job Titles").click()
+        cy.contains(dashboard.adminmenu()).click()
+        jobtitle.createJobTitle(data.jobtile, data.jobdescription)
 
-    cy.get('button[class="oxd-button oxd-button--medium oxd-button--secondary"]').click()
-
-    let RandomText = (Math.random() + 1).toString(36).substring(7);
-    cy.get('#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > form > div:nth-child(1) > div > div:nth-child(2) > input').type(data.jobtile+RandomText)
-
-    cy.get('textarea[placeholder="Type description here"]').type(data.jobdescription)
-
-    cy.get('button[type="submit"]').click()
-    cy.contains("Successfully Saved").should('be.visible')
     })
 
-  })
+})

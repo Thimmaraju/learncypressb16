@@ -4,11 +4,11 @@ describe('Verify Login functionality', () => {
       cy.login("Admin", "admin123")
   })
 
-  it('Verify Login with invalid username and Valid Password', () => {
+  it.only('Verify Login with invalid username and Valid Password', () => {
      
     cy.visit('/web/index.php/auth/login')
 
-    cy.get('input[placeholder="Username"]').type("efeehb")
+    cy.xpath('//input[@placeholder="Username"]').type("efeehb")
 
     cy.get('input[name="password"]').type("admin123")
 
