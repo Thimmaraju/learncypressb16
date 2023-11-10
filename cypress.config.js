@@ -10,6 +10,7 @@ module.exports = defineConfig({
     // "viewportHeight": 667,
 
     "retries":{openMode: 2, runMode:1},
+    //"watchForFileChanges":false,
     env:{
 
         "username": "Admin",

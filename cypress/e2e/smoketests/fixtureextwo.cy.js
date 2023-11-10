@@ -12,12 +12,17 @@ describe('Understanding Fixtures',function ()  {
 
 
       //cy.wait(40000)
-      cy.get("#reg_username").type(this.data.username)
 
-      cy.get("#reg_email").type(this.data.emailaddress)
+      cy.entertext("#reg_username", this.data.username)
+      
+      //cy.get("#reg_username").type()
 
-       cy.get("#reg_password").type(this.data.weakpassword)
+      // cy.get("#reg_email").type(this.data.emailaddress)
+      cy.entertext("#reg_email", this.data.emailaddress)
 
+      //  cy.get("#reg_password").type(this.data.weakpassword)
+      cy.entertext('//input[@id="reg_password"]',this.data.weakpassword )
+     
        cy.get('button[name="register"]').should("be.disabled");
 
     //or
