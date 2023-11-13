@@ -40,6 +40,21 @@ class JobTitlePage {
         cy.contains(this.successmessage()).should('be.visible')
 
     }
+    selectMonth(monthname){
+
+        cy.get('select[name*="DOB_Month"]').select(monthname)
+
+    }
+
+    entertextinAlert(text){
+
+        cy.window().then(($win) => {
+
+            cy.stub($win, 'prompt').returns(text);
+            cy.contains('Click for JS Prompt').click();
+        })
+    }
+    
 }
 
 const jobtitle = new JobTitlePage()
