@@ -23,6 +23,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+require('@4tw/cypress-drag-drop')
 
 Cypress.Commands.add('login', (value1, value2) => {
     const menuitems = {
