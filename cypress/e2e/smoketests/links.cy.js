@@ -25,32 +25,32 @@ describe('Automation - Working With Links', function () {
 
 
 
-      cy.get('a').its('length').then((elelength) => {
-        var lengthcount = elelength
-        cy.log(lengthcount)
+      // cy.get('a').its('length').then((elelength) => {
+      //   var lengthcount = elelength
+      //   cy.log(lengthcount)
         
+      // })
+
+      // cy.get('a').should('have.length', lengthcount)
+
+      cy.get('.vector-menu-content-list').eq(5).find('a').its('length').then((elelength) => {
+        cy.log(elelength)
+        expect(elelength).to.equal(5)
       })
 
-      cy.get('a').should('have.length', lengthcount)
 
-  //     cy.get('.vector-menu-content-list').eq(5).find('a').its('length').then((elelength) => {
-  //       cy.log(elelength)
-  //       expect(elelength).to.equal(5)
-  //     })
+      cy.get('.mw-halign-right +div').last().then((txt) =>{
 
+           var eletext = txt.text()
 
-  //     cy.get('.mw-halign-right +div').last().then((txt) =>{
+           cy.log(eletext)
+           //cy.writeFile('cypress/fixtures/module2/test4.txt',eletext);
+      })
+      cy.get('a[title="The place to find out"]>span').then((txt) => {
+        var x = txt.text()
+        cy.log(x)
+      })
 
-  //          var eletext = txt.text()
-
-  //          cy.log(eletext)
-  //          cy.writeFile('cypress/fixtures/module2/test4.txt',eletext);
-  //     })
-
-  //     cy.get('.vector-menu-content-list').eq(5).find('a').then((txt) => {
-  //       var x = txt.text()
-  //       cy.log(x)
-  //     })
 
 
   //     cy.get('a[href="/wiki/Main_Page"]>span').last().then((txt) => {

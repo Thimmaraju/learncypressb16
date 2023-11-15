@@ -25,6 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 require('@4tw/cypress-drag-drop')
 
+import 'cypress-file-upload';
 Cypress.Commands.add('login', (value1, value2) => {
     const menuitems = {
 
